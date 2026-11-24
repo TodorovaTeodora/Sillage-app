@@ -7,14 +7,14 @@ A fragrance discovery MVP with a Java 21 / Spring Boot API and a React / TypeScr
 Start the API:
 
 ```powershell
-Set-Location C:\Users\todortsv\fragrance-app\backend
+Set-Location [path]
 mvn spring-boot:run
 ```
 
 In another terminal, start the frontend:
 
 ```powershell
-Set-Location C:\Users\todortsv\fragrance-app\frontend
+Set-Location [path]
 npm install
 npm run dev
 ```
