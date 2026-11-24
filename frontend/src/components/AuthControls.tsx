@@ -179,6 +179,11 @@ export function AuthControls() {
                   onChange={(event) => setPassword(event.target.value)}
                 />
               </label>
+              {mode === 'login' && (
+                <a className="auth-modal__forgot" href="/forgot-password">
+                  Forgot Password?
+                </a>
+              )}
               {mode === 'register' && (
                 <p className="auth-modal__help">{PASSWORD_MESSAGE}</p>
               )}

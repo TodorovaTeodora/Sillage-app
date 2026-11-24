@@ -50,6 +50,20 @@ $env:AWIN_API_TOKEN = 'your-secret-token'
 
 Optional overrides are `AWIN_ADVERTISER_ID` (defaults to `6561`) and `AWIN_LOCALE` (defaults to `en_GB`). Awin images are used first; Commons and generated illustrations remain as fallbacks.
 
+## Password reset email
+
+Forgot Password uses a six-digit code that expires after 15 minutes. Configure an SMTP account through environment variables before starting the backend:
+
+```powershell
+$env:MAIL_HOST = 'smtp.example.com'
+$env:MAIL_PORT = '587'
+$env:MAIL_USERNAME = 'smtp-username'
+$env:MAIL_PASSWORD = 'smtp-password'
+$env:MAIL_FROM = 'no-reply@sillage.app'
+```
+
+`MAIL_SMTP_AUTH` and `MAIL_STARTTLS` default to `true`. SMTP credentials are read only from the environment and must not be committed.
+
 ## API
 
 - `GET /api/fragrances`

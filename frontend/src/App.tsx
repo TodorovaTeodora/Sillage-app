@@ -15,6 +15,7 @@ import { PerformanceRatings } from './components/PerformanceRatings'
 import { WhenToWear } from './components/WhenToWear'
 import { AccountPage } from './components/AccountPage'
 import { CommentsSection } from './components/CommentsSection'
+import { ForgotPasswordPage } from './components/ForgotPasswordPage'
 import type {
   Fragrance,
   FragranceFacets,
@@ -57,6 +58,9 @@ function AppRoutes() {
   }
   if (/^\/account\/?$/.test(window.location.pathname)) {
     return <AccountPage />
+  }
+  if (/^\/forgot-password\/?$/.test(window.location.pathname)) {
+    return <ForgotPasswordPage />
   }
   return <CatalogApp />
 }

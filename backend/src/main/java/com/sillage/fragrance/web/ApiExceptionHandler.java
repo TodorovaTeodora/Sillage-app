@@ -4,6 +4,7 @@ import com.sillage.fragrance.auth.EmailAlreadyRegisteredException;
 import com.sillage.fragrance.auth.AuthenticationRequiredException;
 import com.sillage.fragrance.auth.CurrentPasswordIncorrectException;
 import com.sillage.fragrance.auth.InvalidCredentialsException;
+import com.sillage.fragrance.auth.InvalidResetCodeException;
 import com.sillage.fragrance.auth.UsernameAlreadyTakenException;
 import com.sillage.fragrance.comment.CommentAccessDeniedException;
 import jakarta.validation.ConstraintViolationException;
@@ -67,6 +68,11 @@ public class ApiExceptionHandler {
 	@ExceptionHandler(CommentAccessDeniedException.class)
 	ProblemDetail handleCommentAccessDenied(CommentAccessDeniedException exception) {
 		return problem(HttpStatus.FORBIDDEN, exception.getMessage());
+	}
+
+	@ExceptionHandler(InvalidResetCodeException.class)
+	ProblemDetail handleInvalidResetCode(InvalidResetCodeException exception) {
+		return problem(HttpStatus.BAD_REQUEST, exception.getMessage());
 	}
 
 	@ExceptionHandler(FragranceProviderException.class)

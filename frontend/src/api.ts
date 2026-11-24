@@ -262,6 +262,42 @@ export async function deleteFragranceComment(
   await commentRequest(fragranceId, `/${commentId}`, { method: 'DELETE' })
 }
 
+export async function requestPasswordReset(email: string): Promise<string> {
+  const response = await fetch('/api/auth/forgot-password', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email }),
+  })
+  if (!response.ok) {
+    const problem = (await response.json().catch(() => null)) as
+      | { detail?: string }
+      | null
+    throw new Error(problem?.detail ?? `Request failed with status ${response.status}`)
+  }
+  const result = await response.json() as { message: string }
+  return result.message
+}
+
+export async function resetPassword(
+  email: string,
+  code: string,
+  newPassword: string,
+): Promise<void> {
+  const response = await fetch('/api/auth/reset-password', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, code, newPassword }),
+  })
+  if (!response.ok) {
+    const problem = (await response.json().catch(() => null)) as
+      | { detail?: string }
+      | null
+    throw new Error(problem?.detail ?? `Request failed with status ${response.status}`)
+  }
+}
+
 export function getFragrance(id: string, signal?: AbortSignal): Promise<Fragrance> {
   return getJson<Fragrance>(`/api/fragrances/${encodeURIComponent(id)}`, signal)
 }
