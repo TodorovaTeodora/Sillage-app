@@ -1,6 +1,8 @@
 # Sillage
 
 A fragrance discovery MVP with a Java 21 / Spring Boot API and a React / TypeScript frontend. The default catalog comes from the 10ML Fragrance Index.
+<img width="1918" height="992" alt="Screenshot 2026-11-24 183110" src="https://github.com/user-attachments/assets/aa4c5dbf-646f-4318-9ef2-c7822261c614" />
+
 
 ## Run locally
 
